@@ -1,0 +1,29 @@
+terraform-3-tier-arch/
+├── main.tf                 # Main configuration, calls modules
+├── variables.tf            # Input variables definition
+├── outputs.tf              # Outputs definition (ALB DNS, RDS endpoint)
+├── provider.tf             # AWS Provider configuration
+├── user_data/              # Directory for EC2 user data scripts
+│   └── install_web.sh
+├── modules/                # Reusable modules (optional but good practice)
+│   ├── network/            # VPC, Subnets, IGW, NAT, Routes
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   │   └── outputs.tf
+│   ├── security/           # Security Groups
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   │   └── outputs.tf
+│   ├── compute/            # ASG, Launch Template
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   │   └── outputs.tf
+│   ├── load_balancer/      # ALB, Target Group, Listener
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   │   └── outputs.tf
+│   └── database/           # RDS, Subnet Group
+│       ├── main.tf
+│       ├── variables.tf
+│       └── outputs.tf
+└── terraform.tfvars        # (Optional) File to specify variable values (add to .gitignore!)
